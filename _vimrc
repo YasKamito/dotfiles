@@ -99,4 +99,11 @@ NeoBundle 'soramugi/auto-ctags.vim'
 " Ctagsのキーバインド
 noremap <C-C> :Ctags<CR>
 
+
+""""""""""""""""""""""""""""""
+" theme color
+""""""""""""""""""""""""""""""
+syntax enable
+colorscheme desert
+
 filetype plugin indent on
