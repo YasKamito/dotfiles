@@ -66,6 +66,9 @@ endif
 NeoBundle 'Shougo/unite.vim'
 " Unite.vimで最近使ったファイルを表示できるようにする
 NeoBundle 'Shougo/neomru.vim'
+" unite-outlineでアウトラインを表示できるようにする
+NeoBundle 'Shougo/unite-outline'
+nnoremap <silent> <Space>uo       : <C-u>Unite -no-quit -vertical -winwidth=30 outline<CR>
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 """"""""""""""""""""""""""""""
