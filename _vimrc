@@ -9,6 +9,8 @@ set autoindent
 set shiftwidth=4
 "set cindent
 set list
+"set clipboard
+set clipboard+=unnamed
 
 " スペースなどの見えない文字の表示方法を変える
 set listchars=tab:>-,nbsp:%,extends:>,precedes:<
