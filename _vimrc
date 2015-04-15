@@ -26,6 +26,12 @@ set nocompatible
 filetype off
 
 """"""""""""""""""""""""""""""
+" theme color
+""""""""""""""""""""""""""""""
+syntax enable
+colorscheme desert
+
+""""""""""""""""""""""""""""""
 " NeoBundle関連
 """"""""""""""""""""""""""""""
 if has('vim_starting')
@@ -38,10 +44,64 @@ endif
 
 """"""""""""""""""""""""""""""
 " NEADTree Installing
-"  and key mapping
 """"""""""""""""""""""""""""""
 NeoBundle 'scrooloose/nerdtree'
+
+""""""""""""""""""""""""""""""
+" Unite Installing
+""""""""""""""""""""""""""""""
+NeoBundle 'Shougo/unite.vim'
+" Unite.vimで最近使ったファイルを表示できるようにする
+NeoBundle 'Shougo/neomru.vim'
+" unite-outlineでアウトラインを表示できるようにする
+NeoBundle 'Shougo/unite-outline'
+
+""""""""""""""""""""""""""""""
+" Auto Ctags 
+""""""""""""""""""""""""""""""
+NeoBundle 'soramugi/auto-ctags.vim'
+
+""""""""""""""""""""""""""""""
+" Multi cursors
+""""""""""""""""""""""""""""""
+NeoBundle 'terryma/vim-multiple-cursors'
+
+""""""""""""""""""""""""""""""
+" key bind 設定
+""""""""""""""""""""""""""""""
+" NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
+
+" バッファ一覧
+" 最近使ったファイルの一覧
+noremap <C-L> :Unite file_mru<CR>
+" sourcesを「今開いているファイルのディレクトリ」とする
+noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+
+" Ctagsのキーバインド
+noremap <C-C> :Ctags<CR>
+
+" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
+" Unit.vimの設定
+" 入力モードで開始する
+let g:unite_enable_start_insert=1
+" ウィンドウを分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
+" ウィンドウを縦に分割して開く
+au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
+" ESCキーを2回押すと終了する
+au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
+au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
+" アウトライン表示
+nnoremap <silent> <Space>uo       : <C-u>Unite -no-quit -vertical -winwidth=30 outline<CR>
+
+" vim grep 設定
+nnoremap [q :cprevious<CR>   " 前へ
+nnoremap ]q :cnext<CR>       " 次へ
+nnoremap [Q :<C-u>cfirst<CR> " 最初へ
+nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
@@ -61,62 +121,5 @@ if has("autocmd")
     \ endif
 endif
 """"""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-" ファイルオープンを便利に
-""""""""""""""""""""""""""""""
-NeoBundle 'Shougo/unite.vim'
-" Unite.vimで最近使ったファイルを表示できるようにする
-NeoBundle 'Shougo/neomru.vim'
-" unite-outlineでアウトラインを表示できるようにする
-NeoBundle 'Shougo/unite-outline'
-nnoremap <silent> <Space>uo       : <C-u>Unite -no-quit -vertical -winwidth=30 outline<CR>
-
-" http://blog.remora.cx/2010/12/vim-ref-with-unite.html
-""""""""""""""""""""""""""""""
-" Unit.vimの設定
-""""""""""""""""""""""""""""""
-" 入力モードで開始する
-let g:unite_enable_start_insert=1
-" バッファ一覧
-noremap <C-P> :Unite buffer<CR>
-" ファイル一覧
-noremap <C-N> :Unite -buffer-name=file file<CR>
-" 最近使ったファイルの一覧
-noremap <C-Z> :Unite file_mru<CR>
-" sourcesを「今開いているファイルのディレクトリ」とする
-noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
-" ウィンドウを分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-" ウィンドウを縦に分割して開く
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-" ESCキーを2回押すと終了する
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-" Auto Ctags 
-""""""""""""""""""""""""""""""
-NeoBundle 'soramugi/auto-ctags.vim'
-" Ctagsのキーバインド
-noremap <C-C> :Ctags<CR>
-
-
-""""""""""""""""""""""""""""""
-" theme color
-""""""""""""""""""""""""""""""
-syntax enable
-colorscheme desert
-
-""""""""""""""""""""""""""""""
-" vim grep 設定
-""""""""""""""""""""""""""""""
-nnoremap [q :cprevious<CR>   " 前へ
-nnoremap ]q :cnext<CR>       " 次へ
-nnoremap [Q :<C-u>cfirst<CR> " 最初へ
-nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 filetype plugin indent on
