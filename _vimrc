@@ -83,6 +83,8 @@ noremap <C-C> :Ctags<CR>
 
 " http://blog.remora.cx/2010/12/vim-ref-with-unite.html
 " Unit.vimの設定
+nnoremap [unite]    <Nop>
+nmap     <Space>u [unite]
 " 入力モードで開始する
 let g:unite_enable_start_insert=1
 " ウィンドウを分割して開く
@@ -95,7 +97,8 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
 " アウトライン表示
-nnoremap <silent> <Space>uo       : <C-u>Unite -no-quit -vertical -winwidth=30 outline<CR>
+let g:unite_split_rule = 'botright'
+nnoremap <silent> [unite]o       : <C-u>Unite -no-quit -vertical -winwidth=30 outline<CR>
 
 " vim grep 設定
 nnoremap [q :cprevious<CR>   " 前へ
@@ -123,3 +126,4 @@ endif
 """"""""""""""""""""""""""""""
 
 filetype plugin indent on
+
