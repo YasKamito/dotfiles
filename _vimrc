@@ -67,6 +67,12 @@ NeoBundle 'soramugi/auto-ctags.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 """"""""""""""""""""""""""""""
+" Markdown viewer
+""""""""""""""""""""""""""""""
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'kannokanno/previm'
+
+""""""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
 " NERDTree
@@ -105,6 +111,16 @@ nnoremap [q :cprevious<CR>   " 前へ
 nnoremap ]q :cnext<CR>       " 次へ
 nnoremap [Q :<C-u>cfirst<CR> " 最初へ
 nnoremap ]Q :<C-u>clast<CR>  " 最後へ
+
+" markdown 設定
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+
+let g:previm_open_cmd = ''
+nnoremap [previm] <Nop>
+nmap <Space>p [previm]
+nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
+nnoremap <silent> [previm]r :call previm#refresh()<CR>
+
 
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
