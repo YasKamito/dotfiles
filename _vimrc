@@ -125,9 +125,9 @@ nnoremap <silent> [previm]r :call previm#refresh()<CR>
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
 """"""""""""""""""""""""""""""
-imap { {}<LEFT>
-imap [ []<LEFT>
-imap ( ()<LEFT>
+"imap { {}<LEFT>
+"imap [ []<LEFT>
+"imap ( ()<LEFT>
 """"""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
