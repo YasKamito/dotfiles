@@ -34,6 +34,7 @@ colorscheme desert
 """"""""""""""""""""""""""""""
 " NeoBundle関連
 """"""""""""""""""""""""""""""
+if 1
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 	"call neobundle#rc(expand('~/.vim/bundle/'))
@@ -74,6 +75,8 @@ NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
 call neobundle#end()
+
+endif
 """"""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
