@@ -5,7 +5,9 @@ export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Added for BSD like ctags
-alias ctags="`brew --prefix`/bin/ctags"
+if [ "$(uname)" == 'Darwin' ]; then
+	alias ctags="`brew --prefix`/bin/ctags"
+fi
 
 ### Add for tmux
 alias tmux='tmux -u'
