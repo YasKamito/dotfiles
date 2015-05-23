@@ -42,6 +42,7 @@ if has('vim_starting')
 	call neobundle#end()
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
 """"""""""""""""""""""""""""""
 " NEADTree Installing
 """"""""""""""""""""""""""""""
@@ -72,6 +73,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
+call neobundle#end()
 """"""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
