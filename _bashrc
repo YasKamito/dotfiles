@@ -12,5 +12,5 @@ fi
 ### Add for tmux
 alias tmux='tmux -u'
 
-PS1='\u@\h:\W\[\033[1;36m\][\j]\[\033[00m\] \[\033[1;33m\]$(if git status &>/dev/null;then echo git[$(git branch | grep "*" |cut -d" " -f2-):$(git status -s |wc -l)];fi)\[\033[00m\] \$ '
+PS1='\u@\h:\W\[\033[1;36m\][\j]\[\033[00m\]\[\033[1;33m\]$(if git status &>/dev/null;then echo git[$(git branch | grep "*" |cut -d" " -f2-):$(git status -s |wc -l)];fi)\[\033[00m\]\$ '
 
