@@ -35,6 +35,7 @@ colorscheme desert
 """"""""""""""""""""""""""""""
 " NeoBundle関連
 """"""""""""""""""""""""""""""
+if 1
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
 	"call neobundle#rc(expand('~/.vim/bundle/'))
@@ -43,6 +44,7 @@ if has('vim_starting')
 	call neobundle#end()
 endif
 
+call neobundle#begin(expand('~/.vim/bundle/'))
 """"""""""""""""""""""""""""""
 " NEADTree Installing
 """"""""""""""""""""""""""""""
@@ -73,6 +75,9 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
+call neobundle#end()
+
+endif
 """"""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
