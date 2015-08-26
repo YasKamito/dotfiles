@@ -11,6 +11,7 @@ set shiftwidth=4
 set list
 "set clipboard
 set clipboard+=unnamed
+set ambiwidth=double
 
 " スペースなどの見えない文字の表示方法を変える
 set listchars=tab:>-,nbsp:%,extends:>,precedes:<
