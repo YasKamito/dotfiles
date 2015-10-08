@@ -120,7 +120,7 @@ nnoremap ]Q :<C-u>clast<CR>  " 最後へ
 
 " markdown 設定
 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-
+let g:previm_show_header = 0
 let g:previm_open_cmd = ''
 nnoremap [previm] <Nop>
 nmap <Space>p [previm]
