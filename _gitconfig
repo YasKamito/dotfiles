@@ -1,0 +1,7 @@
+[alias]
+	co = checkout
+	cm = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:\"%Cred%h%Creset %C(yellow)%ad%Creset | %Cgreen%d%Creset %s %C(bold blue)[%an]%Creset\" --graph --date=short
+	rb = checkout --
