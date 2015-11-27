@@ -5,6 +5,10 @@ set fileencodings=utf-8,cp932,sjis,euc-jp,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucj
 "" タブはスペース2つでインデントする
 set tabstop=4
 set autoindent
+
+imap <F11> <nop>
+set pastetoggle=<F11>
+
 "set expandtab
 set shiftwidth=4
 "set cindent
