@@ -19,7 +19,7 @@ create_sv_file()
 		SV_FNAME=${SV_FNAME_CP}
 	fi
 	echo ${SV_FNAME}
-	cp -p ${OLD_FNAME} ${SV_FNAME}
+	mv ${OLD_FNAME} ${SV_FNAME}
 }
 
 file_check()
