@@ -5,6 +5,8 @@ set fileencodings=utf-8,cp932,sjis,euc-jp,ucs-bom,iso-2022-jp-3,iso-2022-jp,eucj
 "" タブはスペース2つでインデントする
 set tabstop=4
 set autoindent
+set expandtab
+set shiftwidth=4
 
 imap <F11> <nop>
 set pastetoggle=<F11>
@@ -79,9 +81,74 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
+""""""""""""""""""""""""""""""
+" railsコード補完 RSense設定
+""""""""""""""""""""""""""""""
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'NigoroJr/rsense'
+NeoBundle 'supermomonga/neocomplete-rsense.vim'
+
+""""""""""""""""""""""""""""""
+" rails静的解析
+""""""""""""""""""""""""""""""
+NeoBundle 'scrooloose/syntastic'
+
+""""""""""""""""""""""""""""""
+" railsドキュメント参照
+""""""""""""""""""""""""""""""
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'yuku-t/vim-ref-ri'
+
+""""""""""""""""""""""""""""""
+" メソッド定義元へのジャンプ
+""""""""""""""""""""""""""""""
+NeoBundle 'szw/vim-tags'
+
+""""""""""""""""""""""""""""""
+" rubyでdef endなどを自動で閉じる
+""""""""""""""""""""""""""""""
+NeoBundle 'tpope/vim-endwise'
+
+""""""""""""""""""""""""""""""
+" vim-rails
+""""""""""""""""""""""""""""""
+NeoBundle 'tpope/vim-rails'
+
 call neobundle#end()
 
 endif
+
+""""""""""""""""""""""""""""""
+" ~/neobundle.log にログを出力する
+""""""""""""""""""""""""""""""
+let g:neobundle#log_filename = $HOME . "/neobundle.log"
+
+""""""""""""""""""""""""""""""
+" railsコード補完 Rsense
+""""""""""""""""""""""""""""""
+let g:rsenseHome = "/usr/local/Cellar/rsense/0.3/libexec"
+let g:rsenseUseOmniFunc = 1
+
+""""""""""""""""""""""""""""""
+" railsコード補完 neocomplete.vim
+""""""""""""""""""""""""""""""
+let g:acp_enableAtStartup = 0
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+  let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
+
+" --------------------------------
+" rubocop
+" --------------------------------
+" syntastic_mode_mapをactiveにするとバッファ保存時にsyntasticが走る
+" active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
+
+
 """"""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
