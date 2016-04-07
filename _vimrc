@@ -152,6 +152,9 @@ let g:syntastic_ruby_checkers = ['rubocop']
 """"""""""""""""""""""""""""""
 " key bind 設定
 """"""""""""""""""""""""""""""
+" スペース＋ドットで.vimrcオープン
+nnoremap <Space>. :<C-u>tabedit $MYVIMRC<CR>
+
 " NERDTree
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
