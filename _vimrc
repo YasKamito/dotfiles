@@ -8,6 +8,9 @@ set autoindent
 set expandtab
 set shiftwidth=4
 
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
+
 imap <F11> <nop>
 set pastetoggle=<F11>
 
@@ -35,8 +38,11 @@ filetype off
 """"""""""""""""""""""""""""""
 " theme color
 """"""""""""""""""""""""""""""
+
 syntax enable
 colorscheme desert
+
+filetype plugin indent on
 
 """"""""""""""""""""""""""""""
 " NeoBundle関連
@@ -114,9 +120,25 @@ NeoBundle 'tpope/vim-endwise'
 """"""""""""""""""""""""""""""
 NeoBundle 'tpope/vim-rails'
 
+""""""""""""""""""""""""""""""
+" JS coffe-script
+""""""""""""""""""""""""""""""
+" syntax + 自動compile
+NeoBundle 'kchmck/vim-coffee-script'
+" js BDDツール
+NeoBundle 'claco/jasmine.vim'
+" indentの深さに色を付ける
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+""""""""""""""""""""""""""""""
+" slim syntax 
+""""""""""""""""""""""""""""""
+NeoBundle "slim-template/vim-slim"
+
 call neobundle#end()
 
 endif
+
 
 """"""""""""""""""""""""""""""
 " ~/neobundle.log にログを出力する
@@ -147,7 +169,6 @@ let g:neocomplete#force_omni_input_patterns.ruby = '[^.*\t]\.\w*\|\h\w*::'
 " active_filetypesに、保存時にsyntasticを走らせるファイルタイプを指定する
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
 let g:syntastic_ruby_checkers = ['rubocop']
-
 
 """"""""""""""""""""""""""""""
 " key bind 設定
@@ -201,6 +222,11 @@ nmap <Space>p [previm]
 nnoremap <silent> [previm]o :<C-u>PrevimOpen<CR>
 nnoremap <silent> [previm]r :call previm#refresh()<CR>
 
+""""""""""""""""""""""""""""""
+" JS coffe-script
+""""""""""""""""""""""""""""""
+" vimにcoffeeファイルタイプを認識させる
+autocmd BufRead,BufNewFile,BufReadPre *.coffee   set filetype=coffee
 
 """"""""""""""""""""""""""""""
 " 自動的に閉じ括弧を入力
@@ -221,5 +247,4 @@ if has("autocmd")
 endif
 """"""""""""""""""""""""""""""
 
-filetype plugin indent on
 
