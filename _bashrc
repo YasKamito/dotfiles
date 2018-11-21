@@ -8,6 +8,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 if [ "$(uname)" == 'Darwin' ]; then
 	alias ctags="`brew --prefix`/bin/ctags"
 	alias mvim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias rdebug='bundle exec rdebug-ide --host 127.0.0.1 --port 1234 --dispatcher-port 26162 -- bin/rails s'
 fi
 
 ### Add for tmux
@@ -17,5 +18,13 @@ PS1='\u@\h:\W\[\033[1;36m\][\j]\[\033[00m\]\[\033[1;33m\]$(if git status &>/dev/
 
 set -o vi
 
+alias mkcd='source /usr/local/bin/mkcd.sh'
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+### add for anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+eval "$(anyenv init -)"
+
+#export PATH=/Users/yaskamito/.rbenv/shims:/Users/yaskamito/.rbenv/bin:/usr/local/heroku/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/yaskamito/.rvm/bin:/Users/yaskamito/.ndenv/bin
