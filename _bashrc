@@ -1,21 +1,35 @@
-### Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
 
 ### Added for BSD like ctags
 if [ "$(uname)" == 'Darwin' ]; then
 	alias ctags="`brew --prefix`/bin/ctags"
 	alias mvim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	### Added for MacVim
+	if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+		alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+		alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	fi
 fi
-
-### Add for tmux
-alias tmux='tmux -u'
-
-PS1='\u@\h:\W\[\033[1;36m\][\j]\[\033[00m\]\[\033[1;33m\]$(if git status &>/dev/null;then echo git[$(git branch | grep "*" |cut -d" " -f2-):$(git status -s |wc -l)];fi)\[\033[00m\]\$ '
 
 set -o vi
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+### Add for tmux
+alias tmux='tmux -u'
+alias esh='cocot -t UTF-8 -p SJIS -- ssh'
+
+### Add for anyenv
+[[ -d ~/.anyenv ]] && \
+  export PATH="$HOME/.anyenv/bin:$PATH" && \
+  eval "$(anyenv init -)"
+
+### Add for my tools
+PATH=/Users/aab21246/bin:$PATH; export PATH;
+
+### Add for git
+alias gitfh='git ls-files | xargs -L 1 git log -1 --name-only --pretty="%h" |grep -v '\''^\s*$'\'' | awk '\''{if(NR%2)ORS="\t";else ORS="\n";print}'\'''
+
+### Add for console
+PS1='\u@\h:\W\[\033[1;36m\][\j]\[\033[00m\]\[\033[1;33m\]$(if git status &>/dev/null;then echo git[$(git branch | grep "*" |cut -d" " -f2-):$(git status -s |wc -l)];fi)\[\033[00m\]\$ '
+
