@@ -24,7 +24,7 @@ alias esh='cocot -t UTF-8 -p SJIS -- ssh'
   eval "$(anyenv init -)"
 
 ### Add for my tools
-PATH=/Users/aab21246/bin:$PATH; export PATH;
+PATH=~/bin:$PATH; export PATH;
 
 ### Add for git
 alias gitfh='git ls-files | xargs -L 1 git log -1 --name-only --pretty="%h" |grep -v '\''^\s*$'\'' | awk '\''{if(NR%2)ORS="\t";else ORS="\n";print}'\'''
