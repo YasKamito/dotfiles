@@ -2,8 +2,6 @@
 ## return value
 RC_OK=0
 RC_ERROR=1
-RC_CANCEL=2
-RC_KEYNOTFOUND=3
 
 set_to_gitconfig()
 {
