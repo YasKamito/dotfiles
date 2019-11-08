@@ -47,7 +47,7 @@ PATH=~/bin:$PATH; export PATH;
 alias mkcd='source ~/bin/mkcd.sh'
 
 ### Add for git
-alias gitfh='git ls-files | xargs -L 1 git log -1 --name-only --pretty="%h" |grep -v '\''^\s*$'\'' | awk '\''{if(NR%2)ORS="\t";else ORS="\n";print}'\'''
+alias gitfh='source ~/bin/gitfh.sh'
 
 #export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
