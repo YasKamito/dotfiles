@@ -60,5 +60,13 @@ if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 	ln -s ~/dotfiles/_ctags ${FNAME}
 fi
 
+# mkcd setting
+mkdir -p ~/bin
+FNAME=~/bin/mkcd.sh
+file_check ${FNAME}
+if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
+	ln -s ~/dotfiles/mkcd.sh ${FNAME}
+fi
+
 # gitconfig setting
 ./setgconf.sh

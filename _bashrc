@@ -2,10 +2,23 @@
 if [ "$(uname)" == 'Darwin' ]; then
 	alias ctags="`brew --prefix`/bin/ctags"
 	alias mvim='env_LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	### Added for MacVim
+	if [ -f /Applications/MacVim.app/Contents/MacOS/Vim ]; then
+		alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+		alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+	fi
 fi
+
+set -o vi
 
 ### Add for tmux
 alias tmux='tmux -u'
+alias esh='cocot -t UTF-8 -p SJIS -- ssh'
+
+### Add for anyenv
+[[ -d ~/.anyenv ]] && \
+  export PATH="$HOME/.anyenv/bin:$PATH" && \
+  eval "$(anyenv init -)"
 
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
@@ -27,9 +40,14 @@ GIT_PS1_SHOWUNTRACKEDFILES=
 # \$ $
 #export PS1='\[\033[1;32m\]\u\[\033[00m\]:\[\033[1;34m\]\w\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
 export PS1='\[\033[1;32m\]\u\[\033[00m\]:\[\033[1;34m\]$(echo "\w" | sed -e "/^.\{26,\}$/s/^\(.\{13\}\).*\(.\{13\}\)$/\1...\2/")\[\033[1;31m\]$(__git_ps1)\[\033[00m\] \$ '
-##############
 
-set -o vi
+##############
+### Add for my tools
+PATH=~/bin:$PATH; export PATH;
+alias mkcd='source ~/bin/mkcd.sh'
+
+### Add for git
+alias gitfh='git ls-files | xargs -L 1 git log -1 --name-only --pretty="%h" |grep -v '\''^\s*$'\'' | awk '\''{if(NR%2)ORS="\t";else ORS="\n";print}'\'''
 
 #export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
