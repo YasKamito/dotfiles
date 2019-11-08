@@ -60,8 +60,10 @@ if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 	ln -s ~/dotfiles/_ctags ${FNAME}
 fi
 
-# mkcd setting
+# make bin directory
 mkdir -p ~/bin
+
+# mkcd setting
 FNAME=~/bin/mkcd.sh
 file_check ${FNAME}
 if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
@@ -69,7 +71,6 @@ if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 fi
 
 # mkcd setting
-mkdir -p ~/bin
 FNAME=~/bin/codeofweek.sh
 file_check ${FNAME}
 if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then

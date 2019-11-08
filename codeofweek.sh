@@ -69,7 +69,7 @@ get_options()
             *)
                 START_DATE=${1}
                 SINCE=${START_DATE}
-                END_DATE=$(date -v+7d -j -f "%Y-%m-%d" "${START_DATE}" +"%Y-%m-%d" 2> /dev/null)
+                END_DATE=$(date -v+6d -j -f "%Y-%m-%d" "${START_DATE}" +"%Y-%m-%d" 2> /dev/null)
                 if [ $RC_OK -ne $? ]; then
                     echo "Error occurred : illegal params \$1 $START_DATE"
                     usage
@@ -97,12 +97,11 @@ RC=${?}
 
 cnt=0
 while [ 1 ] ;do
-    UNTIL=$(date -v+1d -j -f "%Y-%m-%d" "${SINCE}" +"%Y-%m-%d")
-    CODENUM=$(git log --numstat --pretty="%H" --author="${AUTHER}" --since="${SINCE}" --until="${UNTIL}" --no-merges | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("%d (+%d,-%d)\n", plus+minus, plus, minus)}')
+    CODENUM=$(git log --numstat --pretty="%H" --author="${AUTHER}" --since="${SINCE} 00:00:00" --until="${SINCE} 23:59:59" --no-merges | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("%d (+%d,-%d)\n", plus+minus, plus, minus)}')
     WEEKDAY=$(date -v+0d -j -f "%Y-%m-%d" "${SINCE}" +"%Y-%m-%d(%a)")
     echo ${WEEKDAY} ${CODENUM}
 
-    SINCE=${UNTIL}
+    SINCE=$(date -v+1d -j -f "%Y-%m-%d" "${SINCE}" +"%Y-%m-%d")
     [ ${SINCE} == ${END_DATE} ] && break
 
     let cnt=$cnt+1
