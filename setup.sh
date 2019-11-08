@@ -68,5 +68,13 @@ if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 	ln -s ~/dotfiles/mkcd.sh ${FNAME}
 fi
 
+# mkcd setting
+mkdir -p ~/bin
+FNAME=~/bin/codeofweek.sh
+file_check ${FNAME}
+if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
+	ln -s ~/dotfiles/codeofweek.sh ${FNAME}
+fi
+
 # gitconfig setting
 ./setgconf.sh
