@@ -20,6 +20,13 @@ alias esh='cocot -t UTF-8 -p SJIS -- ssh'
   export PATH="$HOME/.anyenv/bin:$PATH" && \
   eval "$(anyenv init -)"
 
+### Add for go
+[[ -d ~/go ]] && \
+  GOVERSION=$(goenv versions | grep -e '^*' | awk -F' ' '{print $2}')
+  export GOENV_DISABLE_GOPATH=1
+  export GOPATH=$HOME/go/${GOVERSION}
+  export PATH=$PATH:$GOPATH/bin
+
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
 # プロンプトに各種情報を表示
