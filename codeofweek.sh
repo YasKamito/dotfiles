@@ -7,7 +7,7 @@ RC_ERROR=1
 RC_CANCEL=2
 
 # Set default value
-AUTHER='YasKamito'
+AUTHER=''
 
 ###############################
 # version
@@ -97,7 +97,7 @@ RC=${?}
 
 cnt=0
 while [ 1 ] ;do
-    CODENUM=$(git log --numstat --pretty="%H" --author="${AUTHER}" --since="${SINCE} 00:00:00" --until="${SINCE} 23:59:59" --no-merges | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("%d (+%d,-%d)\n", plus+minus, plus, minus)}')
+    CODENUM=$(git log --numstat --pretty="%H" ${AUTHER:+--author="${AUTHER}"} --since="${SINCE} 00:00:00" --until="${SINCE} 23:59:59" --no-merges | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("%d (+%d,-%d)\n", plus+minus, plus, minus)}')
     WEEKDAY=$(date -v+0d -j -f "%Y-%m-%d" "${SINCE}" +"%Y-%m-%d(%a)")
     echo ${WEEKDAY} ${CODENUM}
 
