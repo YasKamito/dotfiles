@@ -64,17 +64,17 @@ fi
 mkdir -p ~/bin
 
 # mkcd setting
-FNAME=~/bin/mkcd.sh
+FNAME=~/bin/mkcd
 file_check ${FNAME}
 if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 	ln -s ~/dotfiles/mkcd.sh ${FNAME}
 fi
 
-# mkcd setting
-FNAME=~/bin/codeofweek.sh
+# weekloc setting
+FNAME=~/bin/weekloc
 file_check ${FNAME}
 if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
-	ln -s ~/dotfiles/codeofweek.sh ${FNAME}
+	ln -s ~/dotfiles/weekloc.sh ${FNAME}
 fi
 
 # gitconfig setting
