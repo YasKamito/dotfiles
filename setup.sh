@@ -64,7 +64,7 @@ fi
 mkdir -p ~/bin
 
 # mkcd setting
-FNAME=~/bin/mkcd
+FNAME=~/bin/mkcd.sh
 file_check ${FNAME}
 if [ $? -eq ${RC_FILE} -o $? -eq ${RC_NOTEXISTS} ]; then
 	ln -s ~/dotfiles/mkcd.sh ${FNAME}
